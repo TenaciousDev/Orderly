@@ -8,4 +8,9 @@
     <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Orderly.Data\Orderly.Data.csproj" />
+    <ProjectReference Include="..\Orderly.Models\Orderly.Models.csproj" />
+  </ItemGroup>
+
 </Project>

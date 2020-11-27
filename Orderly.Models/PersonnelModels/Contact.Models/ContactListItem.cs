@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Orderly.Data
+namespace Orderly.Models
 {
-    public class Contact
+    public class ContactListItem
     {
-        [Key]
         public int Id { get; set; }
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
@@ -32,15 +28,5 @@ namespace Orderly.Data
         public int VehicleYear { get; set; }
         [Display(Name = "Last Vehicle Inspection")]
         public DateTimeOffset? VehicleInspected { get; set; }
-        [Display(Name = "Created by")]
-        public string CreatedByUserName { get; set; }
-        public Guid CreatedBy { get; set; }
-        [Display(Name = "Last modified by")]
-        public string ModifiedByUserName { get; set; }
-        public Guid ModifiedLast { get; set; }
-        [Display(Name = "Created on")]
-        public DateTimeOffset CreatedUtc { get; set; }
-        [Display(Name = "Modified on")]
-        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

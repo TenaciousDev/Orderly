@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Orderly.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Orderly.Data
+namespace Orderly.Models
 {
-    public class UnitInfo
+    public class UnitInfoEdit
     {
-        [Key]
         public int Id { get; set; }
         public int TeamId { get; set; }
         [ForeignKey(nameof(TeamId))]
@@ -22,15 +20,5 @@ namespace Orderly.Data
         public DateTimeOffset? LossDate { get; set; }
         [Display(Name = "Duty Status")]
         public string DutyStatus { get; set; }
-        [Display(Name = "Created by")]
-        public string CreatedByUserName { get; set; }
-        public Guid CreatedBy { get; set; }
-        [Display(Name = "Last modified by")]
-        public string ModifiedByUserName { get; set; }
-        public Guid ModifiedLast { get; set; }
-        [Display(Name = "Created on")]
-        public DateTimeOffset CreatedUtc { get; set; }
-        [Display(Name = "Modified on")]
-        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
