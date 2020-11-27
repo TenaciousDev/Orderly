@@ -1,4 +1,6 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -28,6 +30,39 @@ namespace Orderly.Data
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+        public DbSet<Record> Records { get; set; }
+        public DbSet<Personnel> PersonnelDbSet { get; set; }
+        public DbSet<Contact> ContactDbSet { get; set; }
+        public DbSet<Housing> HousingDbSet { get; set; }
+        public DbSet<UnitInfo> UnitInfoDbSet { get; set; }
+        public DbSet<Platoon> PlatoonDbSet { get; set; }
+        public DbSet<Squad> SquadDbSet { get; set; }
+        public DbSet<Team> TeamDbSet { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Conventions
+                .Remove<PluralizingTableNameConvention>();
+
+            modelBuilder
+                .Configurations
+                .Add(new IdentityUserLoginConfiguration())
+                .Add(new IdentityUserRoleConfiguration());
+        }
+    }
+    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+    {
+        public IdentityUserLoginConfiguration()
+        {
+            HasKey(iul => iul.UserId);
+        }
+    }
+    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+    {
+        public IdentityUserRoleConfiguration()
+        {
+            HasKey(iur => iur.UserId);
         }
     }
 }
